@@ -3,10 +3,10 @@
 
 using namespace std;
 
-const int SIZE = 7;
+const int SIZE = 8;
 
 int main(){
-   int intArray[SIZE] = {5, 3, 32, -1, 1, 104, 53};
+   int intArray[SIZE] = {5, 3, 32, -1, 1, 104, 53,54};
 
     //call sort function
     sort(intArray, intArray + SIZE);

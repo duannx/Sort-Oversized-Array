@@ -12,34 +12,23 @@ using namespace std;
 #define TOTAL_NUMBER 1000000
 vector <int> get_data(string file_name, int start_position, int size){
 	int pos = 0;			// indices of vector
-    int c;					// store char 
-    string str ="";			// store each number
+    int c;					// store int  
     vector <int> arr; 		// store numbers
 	FILE *file = fopen(file_name.c_str(), "r"); //Open file
-	 if(file) {
-      do {  
-          c = fgetc(file);			//Read a char
-          if(c != EOF) {
-          	if(c == 32 && str!=""){ //End a number (if char = ' ')
-          		if(pos >= start_position)
-         			arr.push_back(atoi( str.c_str() )); //Convert to int and add to vector
-				str = "";			//Set str empty to start new number
-				pos++;				//increase indice
+	if(file) { 
+	 	while(!feof (file) && pos <= size + start_position - 1)
+	 	{  
+	       	fscanf (file, "%d", &c);			//Read an int 
+	       	if( pos >= start_position && !feof (file)) {
+		       	arr.push_back(c);
 			}
-			if(c != 32){			// if char != ' '
-			  	str.push_back((char) c); //Add char to str
-			}
-		  }  
-		  
-          if(pos > size + start_position - 1 || c == EOF) { //If vector have enoungh element. Sort vector. Write to part file and coninue while loop
-            break;
-          }           
-      } while(c != EOF); 
-      fclose(file);   
-	        
+			pos++; 		  
+      	}  
+      cout << "size = " << arr.size() << endl;
+      cout << "pos = " << pos << endl;
+      fclose(file);
     }
-    return arr;
-     
+    return arr;     
 }
 
 void merge_file(string first_file, string second_file, string out_file, int size_of_part, int num_of_part){
@@ -105,12 +94,11 @@ void merge_file(string first_file, string second_file, string out_file, int size
 }
 
 int main(){
-	
 	const int size = TOTAL_NUMBER / 2; 	//size of an vector
 	vector <int> arr; 		// store numbers
 	int i = 1;
 	
-	//Divide input file to 4 sorted file
+	//Divide input file to 2 sorted file
 	for(i=1; i<=2; i++){
 		arr.clear();
 		//Get data
@@ -133,7 +121,7 @@ int main(){
 	}
     arr.clear(); 
     
-    merge_file("part1.txt","part2.txt","result.txt",TOTAL_NUMBER / 4,2); 
+    //merge_file("part1.txt","part2.txt","result.txt",TOTAL_NUMBER / 4,2); 
 	return 0;
 }
 

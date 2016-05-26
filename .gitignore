@@ -1,2 +1,5 @@
 #No tracking file .exe
 *.exe
+#No tracking file firsthalf.txt and result.txt
+firsthalf.txt
+result.txt

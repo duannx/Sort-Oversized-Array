@@ -9,9 +9,8 @@
 
 using namespace std;
 
-#define TOTAL_NUMBER 1000000
-
 int main(){
+	const int TOTAL_NUMBER = 1000000;
 	const int size = TOTAL_NUMBER / 2; 	//size of array	
 	int pos = 0;			// index of array
 	int char_input;			// store int  

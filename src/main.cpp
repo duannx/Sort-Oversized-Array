@@ -18,20 +18,20 @@ int main(){
 	int arr[size]; 			// store numbers
 
 	//Read file and write first half to "firsthalf.txt", store second half to array
-	FILE *file = fopen("input.txt", "r"); //Open file
+	FILE *file = fopen("..\\IO-files\\input.txt", "r"); //Open file
 	if (file) {
 		//write first half to "firsthalf.txt"
 		//store first half to array
 		while (!feof(file) && pos < size)
 		{
 			fscanf(file, "%d", &c);		//Read an int  
-			arr[pos++] = c; 				//push to array 	  
+			arr[pos++] = c; 			//push to array  
 		}
 		//sort array
 		sort(arr, arr + size);
 		//write array to file
 		ofstream outfile;
-		outfile.open("firsthalf.txt", ios::out | ios::app | ios::binary);
+		outfile.open("..\\IO-files\\firsthalf.txt", ios::out | ios::app | ios::binary);
 		int i = 0;
 		for (; i < size; i++){
 			outfile << arr[i] << " ";
@@ -43,20 +43,19 @@ int main(){
 		while (!feof(file) && pos < size)
 		{
 			fscanf(file, "%d", &c);		//Read an int  
-			arr[pos++] = c; 				//push to array 	  
+			arr[pos++] = c; 			//push to array 	  
 		}
 		//sort array
 		sort(arr, arr + size);
 
 		fclose(file);
 	}
-
 	//merge two half and write to result file
-	FILE *first_half = fopen("firsthalf.txt", "r"); //Open file
+	FILE *first_half = fopen("..\\IO-files\\firsthalf.txt", "r"); //Open file
 	if (first_half){
 		int i = 0;						//index of arr
 		ofstream outfile;
-		outfile.open("result.txt", ios::out | ios::app | ios::binary);
+		outfile.open("..\\IO-files\\result.txt", ios::out | ios::app | ios::binary);
 		while (!feof(first_half))
 		{
 			fscanf(first_half, "%d", &c);		//Read an int
@@ -69,7 +68,7 @@ int main(){
 		outfile.close();
 	}
 
-	cout << "Success! See result in result.txt";
+	cout << "Success! See result in IO-files\result.txt";
 
 	return 0;
 }

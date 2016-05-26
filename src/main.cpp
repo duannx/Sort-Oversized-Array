@@ -9,13 +9,14 @@
 
 using namespace std;
 
-int main(){
-	const int TOTAL_NUMBER = 1000000;
-	const int size = TOTAL_NUMBER / 2; 	//size of array	
-	int pos = 0;			// index of array
-	int char_input;			// store int  
-	int arr[size]; 			// store numbers
 
+const int TOTAL_NUMBER = 1000000;
+const int size = TOTAL_NUMBER / 2; 	//size of array	
+int pos = 0;			// index of array
+int char_input;			// store int  
+int arr[size]; 			// store numbers
+
+void ReadInput(){
 	//Read file and write first half to "firsthalf.txt", store second half to array
 	FILE *file = fopen("..\\IO-files\\input.txt", "r"); //Open file
 	if (file) {
@@ -49,6 +50,9 @@ int main(){
 
 		fclose(file);
 	}
+}
+
+void WriteOutput(){
 	//merge two half and write to result file
 	FILE *first_half = fopen("..\\IO-files\\firsthalf.txt", "r"); //Open file
 	if (first_half){
@@ -68,7 +72,11 @@ int main(){
 	}
 
 	cout << "Success! See result in IO-files\\result.txt";
+}
 
+int main(){
+	ReadInput();
+	WriteOutput();
 	return 0;
 }
 

@@ -14,7 +14,7 @@ using namespace std;
 int main(){
 	const int size = TOTAL_NUMBER / 2; 	//size of array	
 	int pos = 0;			// index of array
-	int c;					// store int  
+	int char_input;			// store int  
 	int arr[size]; 			// store numbers
 
 	//Read file and write first half to "firsthalf.txt", store second half to array
@@ -24,8 +24,8 @@ int main(){
 		//store first half to array
 		while (!feof(file) && pos < size)
 		{
-			fscanf(file, "%d", &c);		//Read an int  
-			arr[pos++] = c; 			//push to array  
+			fscanf(file, "%d", &char_input);		//Read an int  
+			arr[pos++] = char_input; 			//push to array  
 		}
 		//sort array
 		sort(arr, arr + size);
@@ -42,8 +42,8 @@ int main(){
 		pos = 0;
 		while (!feof(file) && pos < size)
 		{
-			fscanf(file, "%d", &c);		//Read an int  
-			arr[pos++] = c; 			//push to array 	  
+			fscanf(file, "%d", &char_input);		//Read an int  
+			arr[pos++] = char_input; 			//push to array 	  
 		}
 		//sort array
 		sort(arr, arr + size);
@@ -58,17 +58,17 @@ int main(){
 		outfile.open("..\\IO-files\\result.txt", ios::out | ios::app | ios::binary);
 		while (!feof(first_half))
 		{
-			fscanf(first_half, "%d", &c);		//Read an int
-			while (i < size && arr[i] <= c){
+			fscanf(first_half, "%d", &char_input);		//Read an int
+			while (i < size && arr[i] <= char_input){
 				outfile << arr[i++] << " ";		//put element of array to file until c < arr[i]
 			}
-			outfile << c << " ";
+			outfile << char_input << " ";
 		}
 
 		outfile.close();
 	}
 
-	cout << "Success! See result in IO-files\result.txt";
+	cout << "Success! See result in IO-files\\result.txt";
 
 	return 0;
 }
